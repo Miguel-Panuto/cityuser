@@ -3,6 +3,6 @@ import { cityController } from '../controllers';
 
 const routes = Router();
 routes.post('/city', cityController.create);
-routes.get('/city');
+routes.get('/city', cityController.index);
 
 export default routes;

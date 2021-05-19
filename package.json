@@ -10,7 +10,8 @@
     "dev:watch": "concurrently --kill-others \"npm run watch\" \"npm run dev\"",
     "migrate:latest": "knex --knexfile src/config/database migrate:latest",
     "migrate:rollback": "knex --knexfile src/config/database migrate:rollback",
-    "migrate:reset": "npm run migrate:rollback && npm run migrate:latest"
+    "seed": "knex --knexfile src/config/database seed:run",
+    "migrate:reset": "npm run migrate:rollback && npm run migrate:latest && npm run seed"
   },
   "devDependencies": {
     "@types/cors": "^2.8.10",

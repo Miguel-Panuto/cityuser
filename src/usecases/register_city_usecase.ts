@@ -10,7 +10,7 @@ export default class RegisterCityUsecase {
 
   async registerCity(city: ICity) {
     try {
-      const isCityFinded = (await this.cityRep.findCity(city)) === undefined;
+      const isCityFinded = (await this.cityRep.findCity(city)) !== undefined;
       if (isCityFinded) throw 'city already created';
       return await this.cityRep.create(city);
     } catch (e) {

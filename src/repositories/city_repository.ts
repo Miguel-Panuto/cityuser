@@ -8,6 +8,14 @@ export default class CityRepository {
     this.db = db;
   }
 
+  private bsSelect(name: string, state: string) {
+    return this.db
+      .select('id')
+      .from('CITY')
+      .where('name', 'LIKE', name)
+      .andWhere('state', 'LIKE', state);
+  }
+
   async create(city: ICity): Promise<number> {
     try {
       return await this.db
@@ -21,16 +29,22 @@ export default class CityRepository {
 
   async findCity(city: ICity): Promise<{ id: number }> {
     try {
-      return await this.db
-        .select('id')
-        .from('CITY')
-        .where('name', city.name)
-        .andWhere('state', city.state)
-        .first();
+      return await this.bsSelect(city.name, city.state).first();
     } catch (e) {
       console.log(e);
-      
+
       throw 'fail in find city';
+    }
+  }
+
+  async findCities(name: string, state: string) {
+    try {
+      return await this.bsSelect(`${name}%`, `${state}%`).select(
+        'name',
+        'state'
+      );
+    } catch (e) {
+      throw 'fail in find cities';
     }
   }
 }
