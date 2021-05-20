@@ -8,10 +8,10 @@
     "dev": "nodemon dist/index.js",
     "watch": "tsc -w",
     "dev:watch": "concurrently --kill-others \"npm run watch\" \"npm run dev\"",
-    "migrate:latest": "knex --knexfile src/config/database migrate:latest",
-    "migrate:rollback": "knex --knexfile src/config/database migrate:rollback",
-    "seed": "knex --knexfile src/config/database seed:run",
-    "migrate:reset": "npm run migrate:rollback && npm run migrate:latest && npm run seed"
+    "migrate:latest": "knex migrate:latest",
+    "migrate:rollback": "knex migrate:rollback",
+    "seed": "knex seed:run",
+    "db:reset": "npm run migrate:rollback && npm run migrate:latest && npm run seed"
   },
   "devDependencies": {
     "@types/cors": "^2.8.10",

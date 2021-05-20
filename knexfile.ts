@@ -8,17 +8,10 @@ const envs = {
     },
     migrations: {
       tableName: 'migrations',
-      directory: './migrations',
+      directory: './src/db/migrations',
     },
     seeds: {
-      directory: './seeds',
-    },
-    useNullAsDefault: true,
-  },
-  test: {
-    client: 'sqlite3',
-    connection: {
-      filename: '../../test.sqlite3',
+      directory: './src/db/seeds',
     },
     useNullAsDefault: true,
   },
