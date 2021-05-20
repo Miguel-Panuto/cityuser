@@ -66,7 +66,7 @@ export default class UserRepository {
   async updateUserName(id: number, fullname: string) {
     try {
       return await this.db
-        .update({ fullname })
+        .update({ fullname, updated_at: this.db.fn.now() })
         .into('USERS')
         .where('id', id)
         .then(async () => await this.bsSelect().where('USERS.id', id).first());
