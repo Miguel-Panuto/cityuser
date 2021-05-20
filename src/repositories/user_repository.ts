@@ -86,7 +86,7 @@ export default class UserRepository {
           id,
         }));
     } catch (e) {
-      throw 'fail in update user in user reposity';
+      throw 'fail in delete user in user reposity';
     }
   }
 }

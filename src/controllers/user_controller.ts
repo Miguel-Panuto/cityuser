@@ -4,6 +4,7 @@ import {
   findUserUsecase,
   registerUserUsecase,
   updateUserNameUsecase,
+  deleteUserUsecase,
 } from '../usecases';
 
 export default class UserController {
@@ -61,6 +62,9 @@ export default class UserController {
 
   async delete(req: Request, res: Response) {
     try {
+      const id = req.params['id'] as unknown as number;
+      const message = await deleteUserUsecase.deleteUser(id);
+      return res.status(200).json(message);
     } catch (e) {
       return res.status(403).json({ error: e });
     }

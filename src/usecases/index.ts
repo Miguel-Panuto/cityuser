@@ -3,6 +3,7 @@ import FindCitiesUsecase from './find_cities_usecase';
 import FindUserUsecase from './find_user_usecase';
 import RegisterUserUsecase from './register_user_usecate';
 import UpdateUserNameUsecase from './update_user_name_usecase';
+import DeleteUserUsecase from './delete_user_usecase';
 
 import { cityRepository, userRepository } from '../repositories';
 
@@ -20,3 +21,4 @@ export const updateUserNameUsecase = new UpdateUserNameUsecase(
   userRepository,
   parseName
 );
+export const deleteUserUsecase = new DeleteUserUsecase(userRepository);
