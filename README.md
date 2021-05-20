@@ -44,6 +44,16 @@ yarn test ou npm run test
 
 ## Endpoints
 
+### Insomnia
+
+Caso tenha o programa instalado, existe um arquivo no projeto chamado `Insomnia-Requests-API.json`, é só importar no Insomnia no qual irá mostrar todos os requests da API.
+
+### Saúde
+
+- Método: GET
+- URL: api/v1/health
+- Resposta: JSON => { status: string }
+
 ### Registro de cidade
 
 - Método: POST

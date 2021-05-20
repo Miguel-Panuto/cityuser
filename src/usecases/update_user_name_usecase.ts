@@ -22,9 +22,9 @@ export default class UpdateUserNameUsecase {
 
   async updateUser(id: number, name: string) {
     try {
-      return this.parseUser(
-        await this.userRep.updateUserName(id, name.toUpperCase())
-      );
+      const user = await this.userRep.updateUserName(id, name.toUpperCase());
+      if (user === undefined) throw 'user not finded';
+      return this.parseUser(user);
     } catch (e) {
       throw e;
     }

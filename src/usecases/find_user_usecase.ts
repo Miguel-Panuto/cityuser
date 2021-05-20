@@ -23,6 +23,7 @@ export default class FindUserUsecase {
   async findUserById(id: number) {
     try {
       const user = await this.userRep.findUserById(id);
+      if (user === undefined) throw 'user not finded';
       return this.parseUser(user);
     } catch (e) {
       throw e;
