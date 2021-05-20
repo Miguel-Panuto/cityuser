@@ -4,11 +4,19 @@ export interface ICity {
 }
 
 export interface IUser {
-  id: number;
+  id?: number;
   name: string;
   gender: string;
   birthdate: Date;
   age: number;
-  cityName: string;
-  cityState: string;
+  cityName?: string;
+  cityState?: string;
+  uuid?: string;
+}
+
+export interface IUserEntry {
+  fullname: string;
+  gender: string;
+  birthdate: Date;
+  age: number;
 }

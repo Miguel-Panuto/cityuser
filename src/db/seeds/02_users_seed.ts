@@ -1,7 +1,8 @@
 import { Knex } from 'knex';
 
-const randomNumber = () =>
-  Math.floor(Math.random() * (8 - 1 + 1) + 1);
+import { v4 as uuid } from 'uuid';
+
+const randomNumber = () => Math.floor(Math.random() * (8 - 1 + 1) + 1);
 
 const randomDate = () => {
   const start = new Date('1922-01-01');
@@ -20,18 +21,96 @@ const createBirth = () => {
 
 export async function seed(knex: Knex): Promise<void> {
   await knex('USERS').insert([
-    { ...createBirth() ,fullname: 'MIGUEL PANUTO', gender: 'M', id_city: randomNumber() },
-    { ...createBirth() ,fullname: 'MARCOS PANUTO', gender: 'M', id_city: randomNumber() },
-    { ...createBirth() ,fullname: 'MICAELA CUNHA', gender: 'F', id_city: randomNumber() },
-    { ...createBirth() ,fullname: 'VICTOR REIS', gender: 'M', id_city: randomNumber() },
-    { ...createBirth() ,fullname: 'GABRIEL PASQUALINI', gender: 'M', id_city: randomNumber() },
-    { ...createBirth() ,fullname: 'VITOR DANIEL', gender: 'M', id_city: randomNumber() },
-    { ...createBirth() ,fullname: 'GABRIELA SILVA', gender: 'F', id_city: randomNumber() },
-    { ...createBirth() ,fullname: 'ISABELA DANTAS', gender: 'F', id_city: randomNumber() },
-    { ...createBirth() ,fullname: 'CARLA DA CRUZ', gender: 'F', id_city: randomNumber() },
-    { ...createBirth() ,fullname: 'JORGE SILVEIRA', gender: 'M', id_city: randomNumber() },
-    { ...createBirth() ,fullname: 'GABRIEL BALSANTE', gender: 'M', id_city: randomNumber() },
-    { ...createBirth() ,fullname: 'PEDRO RICE', gender: 'M', id_city: randomNumber() },
-    { ...createBirth() ,fullname: 'VINICIUS MILANI', gender: 'M', id_city: randomNumber() },
+    {
+      ...createBirth(),
+      fullname: 'MIGUEL PANUTO',
+      gender: 'M',
+      id_city: randomNumber(),
+      uuid: uuid(),
+    },
+    {
+      ...createBirth(),
+      fullname: 'MARCOS PANUTO',
+      gender: 'M',
+      id_city: randomNumber(),
+      uuid: uuid(),
+    },
+    {
+      ...createBirth(),
+      fullname: 'MICAELA CUNHA',
+      gender: 'F',
+      id_city: randomNumber(),
+      uuid: uuid(),
+    },
+    {
+      ...createBirth(),
+      fullname: 'VICTOR REIS',
+      gender: 'M',
+      id_city: randomNumber(),
+      uuid: uuid(),
+    },
+    {
+      ...createBirth(),
+      fullname: 'GABRIEL PASQUALINI',
+      gender: 'M',
+      id_city: randomNumber(),
+      uuid: uuid(),
+    },
+    {
+      ...createBirth(),
+      fullname: 'VITOR DANIEL',
+      gender: 'M',
+      id_city: randomNumber(),
+      uuid: uuid(),
+    },
+    {
+      ...createBirth(),
+      fullname: 'GABRIELA SILVA',
+      gender: 'F',
+      id_city: randomNumber(),
+      uuid: uuid(),
+    },
+    {
+      ...createBirth(),
+      fullname: 'ISABELA DANTAS',
+      gender: 'F',
+      id_city: randomNumber(),
+      uuid: uuid(),
+    },
+    {
+      ...createBirth(),
+      fullname: 'CARLA DA CRUZ',
+      gender: 'F',
+      id_city: randomNumber(),
+      uuid: uuid(),
+    },
+    {
+      ...createBirth(),
+      fullname: 'JORGE SILVEIRA',
+      gender: 'M',
+      id_city: randomNumber(),
+      uuid: uuid(),
+    },
+    {
+      ...createBirth(),
+      fullname: 'GABRIEL BALSANTE',
+      gender: 'M',
+      id_city: randomNumber(),
+      uuid: uuid(),
+    },
+    {
+      ...createBirth(),
+      fullname: 'PEDRO RICE',
+      gender: 'M',
+      id_city: randomNumber(),
+      uuid: uuid(),
+    },
+    {
+      ...createBirth(),
+      fullname: 'VINICIUS MILANI',
+      gender: 'M',
+      id_city: randomNumber(),
+      uuid: uuid(),
+    },
   ]);
 }

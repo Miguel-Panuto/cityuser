@@ -1,6 +1,8 @@
 import { Knex } from 'knex';
 import { IUser } from '../@types/interfaces';
 
+import { v4 } from 'uuid';
+
 export default class UserRepository {
   private db: Knex;
 
@@ -16,6 +18,7 @@ export default class UserRepository {
         'USERS.gender',
         'USERS.birthdate',
         'USERS.age',
+        'USERS.uuid',
         'CITY.name AS cityName',
         'CITY.state AS cityState'
       )
@@ -39,6 +42,51 @@ export default class UserRepository {
         .andWhere('CITY.state', 'LIKE', `${cityState}%`);
     } catch (e) {
       throw 'fail in find users repository';
+    }
+  }
+
+  async createUser(user: {
+    fullname: string;
+    gender: string;
+    birthdate: Date;
+    age: number;
+    id_city: number;
+  }) {
+    try {
+      const uuid = v4();
+      return await this.db
+        .insert({ ...user, uuid })
+        .into('USERS')
+        .then(async () => await this.bsSelect().where('uuid', uuid).first());
+    } catch (e) {
+      throw 'fail in create user in user repository';
+    }
+  }
+
+  async updateUserName(id: number, fullname: string) {
+    try {
+      return await this.db
+        .update({ fullname })
+        .into('USERS')
+        .where('id', id)
+        .then(async () => this.bsSelect().where('id', id).first());
+    } catch (e) {
+      throw 'fail in update user in user reposity';
+    }
+  }
+
+  async deleteUser(id: number) {
+    try {
+      return await this.db
+        .del()
+        .into('USERS')
+        .where('id', id)
+        .then(() => ({
+          message: 'user deleted',
+          id,
+        }));
+    } catch (e) {
+      throw 'fail in update user in user reposity';
     }
   }
 }

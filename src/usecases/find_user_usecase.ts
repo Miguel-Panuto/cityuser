@@ -16,7 +16,7 @@ export default class FindUserUsecase {
       ...user,
       name: this.parseName(user.name),
       birthdate: new Date(user.birthdate),
-      cityName: this.parseName(user.cityName),
+      cityName: this.parseName(user.cityName as string),
     };
   }
 

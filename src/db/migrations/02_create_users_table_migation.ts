@@ -7,6 +7,7 @@ export const up = async (knex: Knex): Promise<void> =>
     table.string('gender', 1).notNullable();
     table.dateTime('birthdate').notNullable();
     table.integer('age').notNullable();
+    table.string('uuid').notNullable();
     table.integer('id_city').notNullable().references('id').inTable('CITY');
 
     table.dateTime('created_at').notNullable().defaultTo(knex.fn.now());

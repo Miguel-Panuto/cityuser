@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import { findUserUsecase } from '../usecases';
+import { findUserUsecase, registerUserUsecase } from '../usecases';
 
 export default class UserController {
   async show(req: Request, res: Response) {
@@ -29,6 +29,16 @@ export default class UserController {
 
   async create(req: Request, res: Response) {
     try {
+      const { name, gender, birthdate, age, cityName, cityState } = req.body;
+      const user = {
+        fullname: name.toUpperCase(),
+        gender,
+        birthdate: new Date(birthdate),
+        age,
+      };
+      const city = { name: cityName, state: cityState };
+      const newUser = await registerUserUsecase.regsiterUser(user, city);
+      return res.status(201).json(newUser);
     } catch (e) {
       return res.status(403).json({ error: e });
     }
