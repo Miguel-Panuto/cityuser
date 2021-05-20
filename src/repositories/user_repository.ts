@@ -69,7 +69,7 @@ export default class UserRepository {
         .update({ fullname })
         .into('USERS')
         .where('id', id)
-        .then(async () => this.bsSelect().where('id', id).first());
+        .then(async () => await this.bsSelect().where('USERS.id', id).first());
     } catch (e) {
       throw 'fail in update user in user reposity';
     }

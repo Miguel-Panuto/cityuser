@@ -1,6 +1,10 @@
 import { Request, Response } from 'express';
 
-import { findUserUsecase, registerUserUsecase } from '../usecases';
+import {
+  findUserUsecase,
+  registerUserUsecase,
+  updateUserNameUsecase,
+} from '../usecases';
 
 export default class UserController {
   async show(req: Request, res: Response) {
@@ -46,6 +50,10 @@ export default class UserController {
 
   async update(req: Request, res: Response) {
     try {
+      const { name } = req.body;
+      const id = req.params['id'];
+      const user = await updateUserNameUsecase.updateUser(parseInt(id), name);
+      return res.status(200).json(user);
     } catch (e) {
       return res.status(403).json({ error: e });
     }
