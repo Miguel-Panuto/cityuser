@@ -34,6 +34,14 @@ Outro ponto importante é sobre a questão do banco de dados, o que pode gerar �
 yarn db:reset ou npm run db:reset
 ```
 
+## Tests
+
+Para executar os testes basta executar o seguinte comando
+
+```shell
+yarn test ou npm run test
+```
+
 ## Endpoints
 
 ### Registro de cidade

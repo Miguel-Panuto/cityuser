@@ -1,14 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES6",
     "module": "commonjs",
+    "lib": ["ES6"],
     "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
+    "removeComments": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "suppressImplicitAnyIndexErrors": true
   },
-  "exclude": ["./knexfile.ts"]
+  "include": ["./src"],
+  "exclude": ["jest.config.ts", "./src/__tests__"]
 }

@@ -37,8 +37,6 @@ export default class RegisterUserUsecase {
       });
       return this.parseUser(user);
     } catch (e) {
-      console.log(e);
-      
       throw e;
     }
   }

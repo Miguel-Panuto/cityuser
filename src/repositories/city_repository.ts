@@ -23,6 +23,8 @@ export default class CityRepository {
         .into('CITY')
         .then(async () => (await this.findCity(city)).id);
     } catch (e) {
+      console.log(e);
+
       throw 'fail in create new city';
     }
   }
@@ -31,8 +33,6 @@ export default class CityRepository {
     try {
       return await this.bsSelect(city.name, city.state).first();
     } catch (e) {
-      console.log(e);
-
       throw 'fail in find city';
     }
   }
